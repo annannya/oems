@@ -7,4 +7,5 @@ from django.conf import settings
 urlpatterns = [
                   re_path(r'^employee$', views.employeeApi),
                   re_path(r'^employee/([0-9]+)$', views.employeeApi),
+                  re_path(r'^filter$', views.filterApi),
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
