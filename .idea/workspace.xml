@@ -6,10 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="20f01a11-23ea-4bf8-8417-09304daea9dc" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oemsapp/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/oemsapp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/oemsapp/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oemsapp/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/oemsapp/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oemsapp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/oemsapp/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/oemsapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/oemsapp/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -21,6 +17,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -41,6 +38,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "last_opened_file_path": "D:/python/oems"

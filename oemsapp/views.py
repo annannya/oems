@@ -62,9 +62,17 @@ def employeeApi(request, id=0):
 @csrf_exempt
 def filterApi(request):
     if request.method == 'POST':
+        # reading the data from user input
         employee_data = JSONParser().parse(request)
-        name = employee_data['Employee_Name']
-        employee = Employee.objects.filter(Employee_Name=name)
-        employees_serializer = EmployeesSerializer(employee, many=True)
+        # to get all the data from database
+        employees = Employee.objects.all()
+        # taking the parameter to be filtered
+        if 'Employee_Name' in request.POST:
+            employees = employees.filter(Employee_Name=employee_data['Employee_Name'])
+        if 'Location' in request.POST:
+            employees = employees.filter(Location=employee_data['Location'])
+        # serializing the data from the database
+        employees_serializer = EmployeesSerializer(employees, many=True)
         return JsonResponse(employees_serializer.data, safe=False)
+
 
