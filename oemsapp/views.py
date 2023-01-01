@@ -76,3 +76,27 @@ def filterApi(request):
         return JsonResponse(employees_serializer.data, safe=False)
 
 
+def index(request):
+    return render(request, "index.html")
+
+
+def all_employee(request):
+    emps = Employee.objects.all()
+    context = {
+        'emps': emps
+
+    }
+    print(context)
+    return render(request, "all_employee.html", context)
+
+
+def add_employee(request):
+    return render(request, "add_employee.html")
+
+
+def remove_employee(request):
+    return render(request, "remove_employee.html")
+
+
+def filter_employee(request):
+    return render(request, "filter_employee.html")
