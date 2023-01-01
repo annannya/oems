@@ -15,34 +15,6 @@ class Employee(models.Model):
     Role = models.CharField(max_length=50)
     Phone_No = models.CharField(max_length=10)
 
-    def __init__(self, Employee_Name, Phone_No):
-        models.Model.__init__(self)
-        self.Employee_Name = Employee_Name
-        self.Phone_No = Phone_No
-
-    def __init__(self, Employee_Name, Department, Joining, Location, Salary, Bonus, Role, Phone_No):
-        models.Model.__init__(self)
-        self.Employee_Name = Employee_Name
-        self.Department = Department
-        self.Joining = Joining
-        self.Location = Location
-        self.Salary = Salary
-        self.Bonus = Bonus
-        self.Role = Role
-        self.Phone_No = Phone_No
-
-    def __init__(self, Employee_ID, Employee_Name, Department, Joining, Location, Salary, Bonus, Role, Phone_No):
-        models.Model.__init__(self)
-        self.Employee_ID = Employee_ID
-        self.Employee_Name = Employee_Name
-        self.Department = Department
-        self.Joining = Joining
-        self.Location = Location
-        self.Salary = Salary
-        self.Bonus = Bonus
-        self.Role = Role
-        self.Phone_No = Phone_No
-
 
 class RemoveEmployee(models.Model):
     Employee_Name = models.CharField(max_length=50)
@@ -52,6 +24,3 @@ class RemoveEmployee(models.Model):
         models.Model.__init__(self)
         self.Employee_Name = Employee_Name
         self.Phone_No = Phone_No
-
-
-

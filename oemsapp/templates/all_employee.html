@@ -11,8 +11,6 @@
       <table class="table table-dark">
          <thead>
             <tr>
-               <!--<th scope="col">#</th>
-               <th scope="col">Employee_ID</th> -->
                <th scope="col">Employee_Name</th>
                <th scope="col">Department</th>
                <th scope="col">Joining</th>
@@ -26,7 +24,6 @@
          {% for emp in employees %}
          <tbody>
             <tr>
-               <!--<th scope="row">{{emp.Employee_ID}}</th>-->
                <td>{{emp.Employee_Name}}</td>
                <td>{{emp.Department}}</td>
                <td>{{emp.Joining}}</td>
@@ -40,5 +37,6 @@
          </tbody>
          {% endfor %}
       </table>
+      </div>
       </body>
 </html>

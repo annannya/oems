@@ -83,10 +83,8 @@ def index(request):
 def all_employee(request):
     # to get all the data from database
     employees = Employee.objects.all()
-    # to map the json data from database to serializer to send back to the user
-    employees_serializer = EmployeesSerializer(employees, many=True)
     context = {
-        'employees': employees_serializer.data
+        'employees': employees
 
     }
     return render(request, "all_employee.html", context)
@@ -106,11 +104,13 @@ def add_employee(request):
         # check if user is already exist or not
         employees = Employee.objects.filter(Employee_Name=employee_data.Employee_Name,
                                             Phone_No=employee_data.Phone_No)
+        print(employees.count())
         # check user existence
         if employees.count() != 0:
             return JsonResponse("User is already Exist in our Application", safe=False)
         elif employee_data is not None:
             # saving the new data into database
+            print(employee_data.Employee_Name)
             employee_data.save()
             return JsonResponse("User has been registered Successfully in Application", safe=False)
         return JsonResponse("Please Enter the correct Input", safe=False)
@@ -121,7 +121,6 @@ def add_employee(request):
 
 
 def remove_employee(request):
-    print(request.POST['Employee_Name'])
     if request.method == 'POST':
         # reading the data from user input
         employee_data = RemoveEmployee(Employee_Name=request.POST['Employee_Name'],
@@ -144,4 +143,22 @@ def remove_employee(request):
 
 
 def filter_employee(request):
-    return render(request, "filter_employee.html")
+    if request.method == 'POST':
+        # to get all the data from database
+        employees = Employee.objects.all()
+        # taking the parameter to be filtered
+        if 'Employee_Name' in request.POST:
+            employees = employees.filter(Employee_Name=request.POST['Employee_Name'])
+        if 'Location' in request.POST:
+            employees = employees.filter(Location=request.POST['Location'])
+        # serializing the data from the database
+        employees_serializer = EmployeesSerializer(employees, many=True)
+        context = {
+            'employees': employees_serializer.data
+
+        }
+        return render(request, "all_employee.html", context)
+    elif request.method == 'GET':
+        return render(request, "filter_employee.html")
+    else:
+        return JsonResponse("Something Went Wrong", safe=False)
