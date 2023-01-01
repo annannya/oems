@@ -81,12 +81,14 @@ def index(request):
 
 
 def all_employee(request):
-    emps = Employee.objects.all()
+    # to get all the data from database
+    employees = Employee.objects.all()
+    # to map the json data from database to serializer to send back to the user
+    employees_serializer = EmployeesSerializer(employees, many=True)
     context = {
-        'emps': emps
+        'employees': employees_serializer.data
 
     }
-    print(context)
     return render(request, "all_employee.html", context)
 
 
