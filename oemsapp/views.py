@@ -3,7 +3,7 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from django.http.response import JsonResponse
 
-from oemsapp.models import Employee
+from oemsapp.models import Employee, RemoveEmployee
 from oemsapp.serializers import EmployeesSerializer
 
 
@@ -116,10 +116,31 @@ def add_employee(request):
         return JsonResponse("Please Enter the correct Input", safe=False)
     elif request.method == 'GET':
         return render(request, "add_employee.html")
+    else:
+        return JsonResponse("Something Went Wrong", safe=False)
 
 
 def remove_employee(request):
-    return render(request, "remove_employee.html")
+    print(request.POST['Employee_Name'])
+    if request.method == 'POST':
+        # reading the data from user input
+        employee_data = RemoveEmployee(Employee_Name=request.POST['Employee_Name'],
+                                       Phone_No=request.POST['Phone_No'])
+        print(employee_data.Employee_Name)
+        name = employee_data.Employee_Name
+        employee = Employee.objects.filter(Employee_Name=name, Phone_No=employee_data.Phone_No)
+        # check user existence
+        if employee.count() == 0:
+            return JsonResponse(name + " is not Exist in our Application")
+        else:
+            # delete the user
+            print(employee)
+            employee.delete()
+            return JsonResponse(name + " has been deleted Successfully", safe=False)
+    elif request.method == 'GET':
+        return render(request, "remove_employee.html")
+    else:
+        return JsonResponse("Something Went Wrong", safe=False)
 
 
 def filter_employee(request):
