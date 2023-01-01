@@ -1,10 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>add employee</title>
-</head>
-<body>
-
-</body>
+   <head>
+      <meta charset="UTF-8">
+      <title>Add Employee</title>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   </head>
+   <body>
+      <div class ="container">
+         <h1>Add an Employee!</h1>
+         <form action="/add_employee" method="post">
+            {% csrf_token %}
+            <label for="Employee_Name">Employee_Name</label><br>
+            <input type="text" id="Employee_Name" name="Employee_Name" value="{{ Employee_Name }}"><br>
+            <label for="Department">Department </label><br>
+            <input type="text" id="Department" name="Department" value="{{ Department }}"><br>
+            <label for="Joining">Joining</label><br>
+            <input type="text" id="Joining" name="Joining" value="{{ Joining }}"><br>
+            <label for="Location">Location</label><br>
+            <input type="text" id="Location" name="Location" value="{{ Location }}"><br>
+            <label for="Salary">Salary</label><br>
+            <input type="number" id="Salary" name="Salary" value="{{ Salary }}"><br>
+            <label for="Bonus">Bonus</label><br>
+            <input type="number" id="Bonus" name="Bonus" value="{{ Bonus }}"><br>
+            <label for="Role">Role</label><br>
+            <input type="text" id="Role" name="Role" value="{{ Role }}"><br>
+            <label for="Phone_No">Phone_No</label><br>
+            <input type="text" id="Phone_No" name="Phone_No" value="{{ Phone_No }}"><br>
+            <hr>
+            <button type="submit" class="btn btn-primary">Submit</button>
+         </form>
+      </div>
+   </body>
 </html>

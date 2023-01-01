@@ -93,7 +93,29 @@ def all_employee(request):
 
 
 def add_employee(request):
-    return render(request, "add_employee.html")
+    if request.method == 'POST':
+        # reading the data from user input
+        employee_data = Employee(Employee_Name=request.POST['Employee_Name'],
+                                 Department=request.POST['Department'],
+                                 Joining=request.POST['Joining'],
+                                 Location=request.POST['Location'],
+                                 Salary=request.POST['Salary'],
+                                 Bonus=request.POST['Bonus'],
+                                 Role=request.POST['Role'],
+                                 Phone_No=request.POST['Phone_No'])
+        # check if user is already exist or not
+        employees = Employee.objects.filter(Employee_Name=employee_data.Employee_Name,
+                                            Phone_No=employee_data.Phone_No)
+        # check user existence
+        if employees.count() != 0:
+            return JsonResponse("User is already Exist in our Application", safe=False)
+        elif employee_data is not None:
+            # saving the new data into database
+            employee_data.save()
+            return JsonResponse("User has been registered Successfully in Application", safe=False)
+        return JsonResponse("Please Enter the correct Input", safe=False)
+    elif request.method == 'GET':
+        return render(request, "add_employee.html")
 
 
 def remove_employee(request):
