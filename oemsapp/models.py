@@ -14,13 +14,3 @@ class Employee(models.Model):
     Bonus = models.IntegerField(default=0)
     Role = models.CharField(max_length=50)
     Phone_No = models.CharField(max_length=10)
-
-
-class RemoveEmployee(models.Model):
-    Employee_Name = models.CharField(max_length=50)
-    Phone_No = models.CharField(max_length=10)
-
-    def __init__(self, Employee_Name, Phone_No):
-        models.Model.__init__(self)
-        self.Employee_Name = Employee_Name
-        self.Phone_No = Phone_No

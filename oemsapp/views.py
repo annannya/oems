@@ -3,7 +3,7 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from django.http.response import JsonResponse
 
-from oemsapp.models import Employee, RemoveEmployee
+from oemsapp.models import Employee
 from oemsapp.serializers import EmployeesSerializer
 
 
@@ -123,8 +123,8 @@ def add_employee(request):
 def remove_employee(request):
     if request.method == 'POST':
         # reading the data from user input
-        employee_data = RemoveEmployee(Employee_Name=request.POST['Employee_Name'],
-                                       Phone_No=request.POST['Phone_No'])
+        employee_data = Employee(Employee_Name=request.POST['Employee_Name'],
+                                 Phone_No=request.POST['Phone_No'])
         print(employee_data.Employee_Name)
         name = employee_data.Employee_Name
         employee = Employee.objects.filter(Employee_Name=name, Phone_No=employee_data.Phone_No)
